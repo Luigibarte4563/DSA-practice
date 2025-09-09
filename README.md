@@ -81,17 +81,3 @@ After completing these, you’ll have the skills to solve bigger challenges like
 - Finding min & max in any dataset  
 - Calculating sum & average from user inputs  
 
----
-
-## 🛠 Requirements
-- Java JDK 8 or later  
-- A code editor or IDE (VS Code, IntelliJ, Eclipse, etc.)  
-
----
-
-## ▶️ How to Run
-1. Clone or download this repository.  
-2. Open a terminal in the project folder.  
-3. Compile the file (example for `Step1.java`):  
-   ```bash
-   javac Step1.java
