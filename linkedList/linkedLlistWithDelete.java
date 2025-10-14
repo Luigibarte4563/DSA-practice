@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Node  {
+class Node {
     String task;
     Node next;
 
@@ -16,12 +16,12 @@ public class linkedLlistWithDelete {
     public void addTask(String task) {
         Node newNode = new Node(task);
 
-        if(head == null) {
+        if (head == null) {
             head = newNode;
         } else {
             Node current = head;
 
-            while(current.next != null) {
+            while (current.next != null) {
                 current = current.next;
             }
 
@@ -30,12 +30,12 @@ public class linkedLlistWithDelete {
     }
 
     public void deleteTask(int position) {
-        if(head == null) {
+        if (head == null) {
             System.out.println("The list is empty, Nothing to delete.");
             return;
         }
 
-        if(position == 1) {
+        if (position == 1) {
             System.out.println("Deleted task: " + head.task);
             head = head.next;
             return;
@@ -45,13 +45,13 @@ public class linkedLlistWithDelete {
         Node previous = null;
         int index = 1;
 
-        while(current != null && index < position) {
+        while (current != null && index < position) {
             previous = current;
             current = current.next;
             index++;
         }
 
-        if(current  == null) {
+        if (current == null) {
             System.out.println("Invalid postion. No task to delete");
         } else {
             System.out.println("Deleted task: " + current.task);
@@ -60,40 +60,78 @@ public class linkedLlistWithDelete {
     }
 
     public void display() {
-        if(head == null) {
+        if (head == null) {
             System.out.println("The task is empty");
         }
 
         Node current = head;
         int index = 1;
-        while(current != null) {
-            System.out.println(index + ". Task " + current.task );
+        while (current != null) {
+            System.out.println(index + ". Task " + current.task);
             current = current.next;
             index++;
         }
     }
 
-    public static void main(String[]main) {
+    public static void main(String[] main) {
         linkedLlistWithDelete list = new linkedLlistWithDelete();
         Scanner s = new Scanner(System.in);
 
-        System.out.print("Enter a number: ");
-        int num = s.nextInt();
-        s.nextLine();
+        boolean isLooping = true;
+        while (isLooping) {
 
-        for(int a = 1; a <= num; a++) {
-            System.out.print(a + ". enter a task: ");
-            String task = s.nextLine();
-            list.addTask(task);
+            System.out.println("Choices:");
+            System.out.println("1. Add Task");
+            System.out.println("2. Remove Task");
+            System.out.println("3. Display Task");
+            System.out.println();
+            System.out.print("Enter a your choice: ");
+            int choice = s.nextInt();
+            s.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter a number: ");
+                    int num = s.nextInt();
+                    s.nextLine();
+
+                    for (int a = 1; a <= num; a++) {
+                        System.out.print(a + ". enter a task: ");
+                        String task = s.nextLine();
+                        list.addTask(task);
+                    }
+                    break;
+
+                case 2:
+                    System.out.println();
+                    System.out.print("enter a number to delete: ");
+                    int del = s.nextInt();
+                    s.nextLine();
+                    list.deleteTask(del);
+                    break;
+
+                case 3:
+                    System.out.println();
+                    System.out.println("Tasks");
+                    list.display();
+                    break;
+                
+                default:
+                    System.out.println("You entered invalid number");
+                    break;
+            }
+
+            System.out.println();
+            System.out.print("You want to continue? y/x: ");;
+            String isContinue = s.nextLine();
+
+            if(isContinue.equalsIgnoreCase("y")) {
+                isLooping = true;
+            } else {
+                isLooping = false;
+            }
         }
 
-        System.out.println();
-        System.out.print("enter a number to delete: ");
-        int del = s.nextInt();
-        list.deleteTask(del);
-        
-        System.out.println();
-        System.out.println("Tasks");
-        list.display();
     }
 }
+
