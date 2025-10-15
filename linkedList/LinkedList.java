@@ -1,11 +1,15 @@
-package linkedList;
+import java.util.Scanner;
 
 class Node {
-    int data;
+    String event;
+    int date;
+    String location;
     Node next;
 
-    public Node(int data) {
-        this.data = data;
+    public Node(String event, int date, String location) {
+        this.event = event;
+        this.date = date;
+        this.location = location;
         this.next = null;
     }
 }
@@ -13,38 +17,66 @@ class Node {
 public class LinkedList {
     Node head;
 
-    public void insert(int data) {
-        Node newNode = new Node(data);
+    public void addEvent(String event, int date, String location) {
+        Node newNode = new Node(event, date, location);
 
-        if(head == null) {
+        if (head == null) {
             head = newNode;
-        }else {
-            Node current = head;
-            
-            while(current != null) {
-                current = current.next;
-            }
-            current.next = newNode;
+            return;
         }
-    }
 
-    public void display() {
         Node current = head;
 
-        while(current != null) {
-            System.out.print(current.data + " -> ");
-            current =  current.next;
+        while (current.next != null) {
+            current = current.next;
         }
-        System.out.print("NULL");
+        newNode.next = current.next;
+        current.next = newNode;
+
     }
 
-    public static void main(String[]args) {
-        LinkedList list = new LinkedList();
+    public void displayEvent() {
+        if (head == null) {
+            System.out.println("Does not have any event here.");
+        }
 
-        list.insert(10);
-        list.insert(20);
-        list.insert(30);
+        Node current = head;
+        int index = 1;
 
-        list.display();
+        System.out.println("EVENTS: ");
+        while (current != null) {
+            System.out.println(index + ". " + "event  : " + current.event + "\n"
+                    + "date    : " + current.date + "\n"
+                    + "location: " + current.location);
+            current = current.next;
+            index++;        
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        LinkedList events = new LinkedList();
+
+        System.out.print("how many event do you like to create? ");
+        int size = s.nextInt();
+        s.nextLine();
+
+        for (int a = 1; a <= size; a++) {
+            System.out.print("Enter event   : ");
+            String event = s.nextLine();
+
+            System.out.print("Enter date    : ");
+            int date = s.nextInt();
+            s.nextLine();
+
+            System.out.print("Enter location: ");
+            String location = s.nextLine();
+            System.out.println();
+
+            events.addEvent(event, date, location);
+        }
+
+        events.displayEvent();
+        s.close();
     }
 }
