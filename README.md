@@ -74,7 +74,7 @@ Each step builds on the previous one, starting from basics (indexing) up to solv
 2. Do **Step 3 → Step 4** to practice `Scanner` + filling arrays.  
 3. Do **Step 5** for odd/even logic.  
 4. Do **Step 6 → Step 7** for sum, average, and min/max.  
-5. Do **Step 8 → Step 9** for reversing.  
+5. Do **Step 8 → Step 9** for reversing.
 
 After completing these, you’ll have the skills to solve bigger challenges like:
 - Reversing arrays entered by the user  
