@@ -13,7 +13,7 @@ class Stack {
 
     void push(int number) {
         if (top == capacity - 1) {
-            System.out.println("Stack is full");
+            System.out.println("The stack is full.");
             return;
         }
 
@@ -21,12 +21,20 @@ class Stack {
         System.out.println("Book added to stack.");
     }
 
-    int pop() { 
+    int pop() {
+        if (top == -1) {
+            System.out.println("The stack is empty.");
+            return -1;
+        }
         return numbers[top--];
     }
 
     int peek() {
-        return numbers[top--];
+        if (top == -1) {
+            System.out.println("The stack is empty.");
+            return -1;
+        }
+        return numbers[top];
     }
 
     String isEmpty() {
@@ -49,7 +57,7 @@ class Stack {
 public class book {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        Stack myStack = new Stack(2);
+        Stack myStack = new Stack(5);
 
         System.out.println("==== Stack Menu ====");
         System.out.println("1. Push (Add Book)");
