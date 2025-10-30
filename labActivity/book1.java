@@ -54,7 +54,7 @@ class Stack {
     }
 }
 
-public class book {
+public class book1 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Stack myStack = new Stack(5);
@@ -83,11 +83,17 @@ public class book {
                     break;
 
                 case 2:
-                    System.out.println("Book removed: " + myStack.pop());
+                    int removedBook = myStack.pop();
+                    if (removedBook != -1) {
+                        System.out.println("Book removed: " + removedBook);
+                    }
                     break;
 
                 case 3:
-                    System.out.println("Top book: " + myStack.peek());
+                    int topBook = myStack.peek();
+                    if (topBook != -1) {
+                        System.out.println("Top book: " + topBook);
+                    }
                     break;
 
                 case 4:
