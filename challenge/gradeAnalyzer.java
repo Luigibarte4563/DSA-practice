@@ -1,59 +1,40 @@
-package challenge;
-
 import java.util.Scanner;
+import java.util.Arrays;
 
 class gradeAnalyzer {
-    public static void main(String[]args) {
+    public static void main(String[] args) {
 
         Scanner s = new Scanner(System.in);
 
-        System.out.print("enter a number of student: ");
-        int countStud = s.nextInt();
+        int[] scores = new int[5];
 
-        int[] arr = new int[countStud];
-
-        for(int a = 0; a < arr.length; a++) {
-            System.out.print("Enter a grade for student " + (a + 1) + ": ");
-            arr[a] = s.nextInt();
+        for (int i = 0; i < scores.length; i++) {
+            System.out.print("Enter score #" + (i + 1) + ": ");
+            scores[i] = s.nextInt();
         }
 
-        System.out.println();
-
+        int highest = scores[0];
+        int lowest = scores[0];
         int sum = 0;
-        int ave = countStud;
 
-        System.out.print("All Grades: ");
-        for(int b = 0; b < arr.length; b++) {
-            System.out.print(arr[b] + " ");
-
-            sum += arr[b];
-        }
-
-        System.out.println();
-
-         int highestGrd = arr[0];
-        int lowestGrd = arr[0];
-
-        for(int c = 1; c < arr.length; c++) {
-            if(highestGrd > arr[c]) {
-                highestGrd = arr[c];
-            }else{
-                lowestGrd = arr[c];
+        for (int score : scores) {
+            if (score > highest) {
+                highest = score;
+            } else {
+                lowest = score;
             }
+
+            sum += score;
         }
 
-        System.out.println("Highest Grade: " + highestGrd);
-        System.out.println("Lowest Grade: " + lowestGrd);
+        double average = (double) sum / scores.length;
 
-        ave = sum/ave;
+        Arrays.sort(scores);
 
-        System.out.println("Average Grade: " + ave);
-
-        System.out.print("Grade in Reverse: ");
-        for(int d = arr.length - 1; d >= 0; d--) {
-            System.out.print(arr[d] + " ");
-        }
-
-
+        System.out.println("\n===== Results =====");
+        System.out.println("Highest Score: " + highest);
+        System.out.println("Lowest Score: " + lowest);
+        System.out.println("Average Score: " + average);
+        System.out.println("Scores in ascending order: " + Arrays.toString(scores));
     }
 }
